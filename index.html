@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أكاديمية بايثون</title><meta name="theme-color" content="#10202d"><link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="بايثون">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f7f7;--card:#fff;--tx:#10202d;--mut:#5d6a76;--line:#ddd8ca;--soft:#efece3;--code:#10202d;--ctx:#f7f7f7;--pri:#10202d;--prt:#c7a667;--gold:#c7a667;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10202d;--card:#172b3c;--tx:#f7f7f7;--mut:#9fb0bf;--line:#2b4156;--soft:#1d3347;--code:#0a151e;--pri:#c7a667;--prt:#10202d}}
+:root[data-theme="dark"]{--bg:#10202d;--card:#172b3c;--tx:#f7f7f7;--mut:#9fb0bf;--line:#2b4156;--soft:#1d3347;--code:#0a151e;--pri:#c7a667;--prt:#10202d}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Cairo',Tahoma,Arial,sans-serif;line-height:1.7}
+.wrap{max-width:780px;margin:0 auto;padding:14px}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 6px 20px rgba(16,32,45,.08)}
+h1,h2{margin:0 0 8px}
+.hero{text-align:center;padding:8px 0}.logo{width:92px;height:92px;border-radius:50%;object-fit:cover;filter:grayscale(1) contrast(1.1);border:3px solid var(--gold);display:inline-block;animation:float 3s ease-in-out infinite}
+.logo.ph{display:inline-grid;place-items:center;font-size:46px;background:var(--soft)}.logo.s{width:46px;height:46px;font-size:22px;animation:none}
+@keyframes float{50%{transform:translateY(-7px) rotate(4deg)}}
+.tabs{display:flex;background:var(--soft);border-radius:14px;padding:3px;margin-bottom:14px;gap:3px}
+.tabs button{flex:1;border:0;background:none;padding:9px;border-radius:10px;font:inherit;font-weight:800;color:var(--tx);cursor:pointer;transition:.2s}
+.tabs button.on{background:var(--pri);color:var(--prt)}
+label{display:block;font-size:14px;font-weight:800;margin:10px 0 4px}
+.field{position:relative}.field span{position:absolute;inset-inline-start:12px;top:50%;transform:translateY(-50%);font-size:18px;pointer-events:none;transition:.2s}
+.field input{width:100%;padding:12px 14px;padding-inline-start:42px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--tx);font:inherit;outline:0;transition:.2s}
+.field input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(199,166,103,.25)}.field:focus-within span{transform:translateY(-50%) scale(1.35) rotate(-8deg)}
+.drop{display:flex;align-items:center;gap:12px;border:2px dashed var(--gold);border-radius:14px;padding:12px;cursor:pointer;transition:.2s}.drop:hover{transform:scale(1.02);background:var(--soft)}
+.drop img{width:64px;height:48px;object-fit:cover;border-radius:8px}.drop .ic{font-size:30px}
+.btn{border:2px solid var(--pri);border-radius:12px;padding:10px 16px;font:inherit;font-weight:800;cursor:pointer;color:var(--prt);background:var(--pri);transition:.15s;display:inline-flex;gap:8px;align-items:center;justify-content:center}
+.btn:hover{background:var(--prt);color:var(--pri);transform:translateY(-2px) scale(1.04)}.btn:active{transform:scale(.95)}
+.btn.full{width:100%;margin-top:16px}.btn.ghost{background:transparent;color:var(--tx);border-color:var(--line)}.btn.ghost:hover{background:var(--soft);border-color:var(--gold);color:var(--tx)}.btn.sm{padding:5px 11px;font-size:14px}
+.shake{animation:shake .4s}@keyframes shake{25%{transform:translateX(8px)}75%{transform:translateX(-8px)}}
+.note{font-size:13px;color:var(--mut);border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;margin-top:12px}
+.center{text-align:center}.big{font-size:64px;animation:float 2.5s infinite}
+.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.grow{flex:1;min-width:120px}
+.chip{border:2px solid var(--gold);border-radius:99px;padding:2px 12px;font-weight:800;transition:.2s}.chip:hover{transform:scale(1.1)}
+.bar{height:12px;background:var(--soft);border:1px solid var(--line);border-radius:99px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#e6d09b);border-radius:99px;transition:width .8s cubic-bezier(.3,1.4,.5,1)}
+.lessons{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 12px}
+.les{position:relative;flex:0 0 118px;border:2px solid var(--line);background:var(--card);border-radius:16px;padding:10px 6px;text-align:center;cursor:pointer;font:inherit;color:var(--tx);transition:.2s}
+.les:hover{transform:translateY(-4px) rotate(-2deg);border-color:var(--gold)}.les .e{font-size:28px;display:block;transition:.2s}.les:hover .e{transform:scale(1.25)}
+.les.cur{background:var(--pri);color:var(--prt);border-color:var(--gold)}.les.lock{border-style:dashed;opacity:.55}.les small{opacity:.8}
+.pin{position:absolute;top:2px;inset-inline-end:4px;font-size:15px;opacity:.3;transition:.2s;cursor:pointer;border:0;background:none;padding:2px}.pin:hover{opacity:1;transform:scale(1.3) rotate(15deg)}.pin.on{opacity:1}
+.lv{display:inline-block;border:1px solid var(--gold);border-radius:99px;padding:0 8px;font-size:12px;font-weight:800}
+.badges{display:flex;gap:10px;flex-wrap:wrap}.bdg{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:12px;border:2px dashed var(--mut);opacity:.45;transition:.3s}
+.bdg.on{opacity:1;border:2px solid var(--gold);background:var(--soft)}.bdg.on:hover{transform:scale(1.1) rotate(-3deg)}.bdg b{font-size:22px}
+.task{background:var(--soft);border-inline-start:5px solid var(--gold);padding:10px 14px;border-radius:10px;margin:10px 0;font-weight:700}
+.exs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.exs button{width:42px;height:42px;border-radius:50%;border:2px solid var(--gold);background:var(--card);color:var(--tx);font:800 16px inherit;cursor:pointer;transition:.2s}
+.exs button:hover:not(:disabled){transform:scale(1.15) rotate(8deg)}.exs button.on{background:var(--pri);color:var(--prt)}.exs button:disabled{border-style:dashed;border-color:var(--line);opacity:.5;cursor:not-allowed}
+code{background:var(--soft);padding:1px 6px;border-radius:6px;direction:ltr;unicode-bidi:embed;font-family:Consolas,monospace}
+textarea{width:100%;height:160px;background:var(--code);color:var(--ctx);border:2px solid var(--line);border-radius:12px;padding:12px;font:15px/1.6 Consolas,Menlo,monospace;direction:ltr;text-align:left;resize:vertical;outline:0;tab-size:4}textarea:focus{border-color:var(--gold)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.out{background:var(--code);color:var(--ctx);border:1px solid var(--gold);border-radius:12px;padding:10px 12px;font:14px Consolas,monospace;direction:ltr;text-align:left;min-height:44px;white-space:pre-wrap}
+.err{border:2px dashed var(--gold);background:var(--soft);border-radius:12px;padding:10px 14px;margin-top:10px;animation:shake .4s}.err .py{direction:ltr;text-align:left;font:800 14px Consolas,monospace}
+.good{border:2px solid var(--gold);background:var(--soft);border-radius:12px;padding:10px 14px;margin-top:10px;font-weight:800}
+.hint{background:var(--soft);border-radius:10px;padding:8px 12px;margin-top:8px}
+.u{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}.u:last-child{border:0}.u img{width:64px;height:48px;object-fit:cover;border-radius:8px;cursor:zoom-in;transition:.2s}.u img:hover{transform:scale(1.15)}
+.tag{font-size:12px;padding:1px 10px;border:1px solid var(--gold);border-radius:99px;font-weight:800}
+.st{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));margin:10px 0}.st div{background:var(--soft);border-radius:12px;padding:8px;text-align:center;font-size:13px}.st b{display:block;font-size:22px;color:var(--tx)}
+.stu{border-top:1px solid var(--line);padding:12px 0}.mini{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.mini span{font-size:12px;flex:1;min-width:76px}.mini .bar{height:7px;margin-top:2px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--line)}.dot.on{background:var(--gold);box-shadow:0 0 0 4px rgba(199,166,103,.35)}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:#10202d;color:#f7f7f7;border:2px solid #c7a667;padding:10px 18px;border-radius:99px;z-index:50;animation:pop .3s}@keyframes pop{from{opacity:0;transform:translate(-50%,20px)}}
+.conf{position:fixed;top:-30px;font-size:26px;z-index:40;pointer-events:none;animation:fall 2s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.3}}
+.lb{position:fixed;inset:0;background:rgba(16,32,45,.88);display:grid;place-items:center;z-index:60}.lb img{max-width:92%;max-height:85%;border-radius:12px}
+.foot{text-align:center;font-size:12px;color:var(--mut);padding:18px 0 30px;margin-top:6px;border-top:1px solid var(--line);line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap"><div id="app"></div><div class="foot">تصميم وتنفيذ<br>مهندس / محمد منصور علي محمد</div></div>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* ====== إعدادات Supabase — غيّر القيمتين دول ====== */
+const SB_URL='https://lqezttjhzxvservkbpvx.supabase.co',SB_KEY='sb_publishable_XJJUv5lU6An_VvQonJaAIg_uuJxlmZR';
+const sb=supabase.createClient(SB_URL,SB_KEY),mail=c=>c.toLowerCase()+'@students.pyacademy.app',save=()=>{};
+let DB=[],REL={l:1,e:0},me=null,tab='login',cur=0,cx=0,photo='',lastOut='',busy=false;
+const logoH=s=>`<img class="logo ${s||''}" src="logo.png" alt="" onerror="this.outerHTML='<div class=&quot;logo ph ${s||''}&quot;>🐍</div>'">`;
+const mapU=p=>({id:p.id,name:p.name,code:p.code,status:p.status,photo:'',photoPath:p.photo_path,done:p.done||[],points:p.points||0,pins:p.pins||[],tries:p.tries||0,wins:p.wins||0,logins:p.logins||0,last:p.last_seen?new Date(p.last_seen).getTime():0});
+async function loadAll(){
+ const st=await sb.from('settings').select('*').eq('id',1).maybeSingle();if(st.data)REL={l:st.data.lessons_open,e:st.data.ex_open};
+ const r=await sb.from('profiles').select('*').order('created_at');DB=(r.data||[]).filter(p=>p.role!=='admin').map(mapU);
+ if(me&&me.admin){const paths=DB.filter(u=>u.photoPath).map(u=>u.photoPath);
+  if(paths.length){const g=await sb.storage.from('ids').createSignedUrls(paths,3600);(g.data||[]).forEach(x=>{const u=DB.find(y=>y.photoPath===x.path);if(u)u.photo=x.signedUrl||''})}}
+}
+async function refresh(){await loadAll();render();toast('🔄 تم التحديث')}
+async function boot(){
+ const {data}=await sb.auth.getSession();
+ if(data.session)await enter(false);else render();
+ runPy('pass');
+ setInterval(async()=>{if(!me||document.querySelector('.lb')||document.activeElement===document.querySelector('#ed'))return;
+  const o=JSON.stringify(REL);await loadAll();if(me.admin||JSON.stringify(REL)!==o)render()},30000);
+}
+async function enter(fresh){
+ const {data:{user}}=await sb.auth.getUser();
+ const {data:p}=await sb.from('profiles').select('*').eq('id',user.id).maybeSingle();
+ if(!p){await sb.auth.signOut();return render()}
+ const msg={pending:['⏳','حسابك لسه تحت المراجعة','استنى موافقة المدرس وجرّب تاني.'],rejected:['🚫','الطلب اترفض','كلّم المدرس أو سجّل تاني ببيانات صحيحة.']}[p.status];
+ if(p.role!=='admin'&&msg){await sb.auth.signOut();return $('#app').innerHTML=`<div class="card center"><div class="big">${msg[0]}</div><h2>${msg[1]}</h2><p>${msg[2]}</p><button class="btn" onclick="render()">رجوع</button></div>`}
+ me=p.role==='admin'?{admin:1}:{code:p.code};
+ if(fresh&&!me.admin)await sb.rpc('touch_login');
+ await loadAll();
+ const u=DB.find(x=>x.code===me.code);
+ if(u){cur=Math.max(0,Math.min(REL.l-1,L.findIndex((l,i)=>l.ex.some((e,j)=>!u.done.includes(i+'-'+j)))));pickX(u)}
+ lastOut='';render();
+}
+function toast(t){const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2600)}
+function confetti(){['🎉','⭐','✨','🏆','🔥'].forEach(e=>{for(let k=0;k<5;k++){const s=document.createElement('span');s.className='conf';s.textContent=e;s.style.left=Math.random()*95+'%';s.style.animationDelay=Math.random()*.6+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),2800)}})}
+
+/* ===== الدروس والتمارين ===== */
+const LV=['🌱 مبتدئ','🔥 متوسط','⚡ متقدم','👑 احتراف'],J=o=>o.join(',');
+const L=[
+{lv:0,e:'👋',t:'أول أمر: print',x:'<code>print()</code> بيطبع أي كلام على الشاشة. الكلام بيتحط بين علامتين تنصيص: <code>print("Hello")</code>',ex:[
+ {q:'اكتب أمر يطبع الكلمة: Hello',h:'print("Hello")',ok:o=>o.join('\n').includes('Hello')},
+ {q:'💡 كارت تعريف: اطبع سطرين، اسمك في سطر وبلدك في سطر',h:'print("Mohamed")\nprint("Egypt")',ok:(o,c)=>o.length==2&&(c.match(/print\(/g)||[]).length>=2},
+ {q:'💡 ارسم هرم من علامة * في 3 أسطر (1 ثم 2 ثم 3 نجوم)',h:'print("*")\nprint("**")\nprint("***")',ok:o=>o.length==3&&o.map(l=>l.trim().length).join()=='1,2,3'}]},
+{lv:0,e:'📦',t:'المتغيرات',x:'المتغير علبة بنخزن فيها قيمة: <code>name = "Ali"</code> وبعدين <code>print(name)</code>',ex:[
+ {q:'اعمل متغير name قيمته أي اسم واطبعه',h:'name = "Sara"\nprint(name)',ok:(o,c)=>/^\s*name\s*=/m.test(c)&&/print\(\s*name\s*\)/.test(c)},
+ {q:'💡 خزّن سنك في متغير age واطبعه',h:'age = 19\nprint(age)',ok:(o,c)=>/age\s*=\s*\d+/.test(c)&&/print\(\s*age\s*\)/.test(c)},
+ {q:'💡 تبديل: a = 1 و b = 2. بدّل القيمتين (استخدم متغير تالت) واطبع a ثم b، المفروض يطبع 2 ثم 1',s:'a = 1\nb = 2\n',h:'temp = a\na = b\nb = temp\nprint(a)\nprint(b)',ok:o=>J(o)=='2,1'}]},
+{lv:0,e:'➕',t:'العمليات الحسابية',x:'بايثون بتحسب: <code>+ - * /</code> و <code>**</code> للأس و <code>%</code> للباقي. <code>print(5 * 3)</code> بتطبع 15',ex:[
+ {q:'اطبع ناتج 15 + 27',h:'print(15 + 27)',ok:o=>J(o)=='42'},
+ {q:'💡 كشف حساب: 3 ساندويتشات بـ 25 جنيه للواحد. اطبع الإجمالي',h:'print(3 * 25)',ok:o=>J(o)=='75'},
+ {q:'💡 حوّل ساعتين لثواني واطبع الناتج',h:'print(2 * 60 * 60)',ok:o=>J(o)=='7200'}]},
+{lv:0,e:'🔀',t:'الشرط if',x:'<code>if</code> بتنفّذ كود لو الشرط صح. السطر اللي بعدها لازم يتحرك لجوه (4 مسافات) ومتنساش النقطتين <code>:</code><br>وتقدر تكمّل بـ <code>elif</code> و <code>else</code>',ex:[
+ {q:'x = 10. لو x أكبر من 5 اطبع: كبير',s:'x = 10\n',h:'if x > 5:\n    print("كبير")',ok:(o,c)=>/\bif\b/.test(c)&&J(o)=='كبير'},
+ {q:'💡 بوابة السن: age = 20. لو age >= 18 اطبع: مسموح، وإلا اطبع: ممنوع',s:'age = 20\n',h:'if age >= 18:\n    print("مسموح")\nelse:\n    print("ممنوع")',ok:(o,c)=>J(o)=='مسموح'&&/else/.test(c)},
+ {q:'💡 درجة الطالب: score = 85. لو 90 أو أكتر اطبع A، لو 80 أو أكتر اطبع B، غير كده اطبع C',s:'score = 85\n',h:'if score >= 90:\n    print("A")\nelif score >= 80:\n    print("B")\nelse:\n    print("C")',ok:(o,c)=>J(o)=='B'&&/elif/.test(c)}]},
+{lv:0,e:'🔁',t:'التكرار for',x:'<code>for</code> بتكرر كود كذا مرة. <code>range(3)</code> يعني 0 و 1 و 2.<br><code>for i in range(3):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(i)</code>',ex:[
+ {q:'اطبع الأرقام من 0 لـ 4 باستخدام for',h:'for i in range(5):\n    print(i)',ok:(o,c)=>/\bfor\b/.test(c)&&J(o)=='0,1,2,3,4'},
+ {q:'💡 جدول الضرب: اطبع جدول 3 (3 و 6 و 9 و 12 و 15)',h:'for i in range(1, 6):\n    print(3 * i)',ok:(o,c)=>/\bfor\b/.test(c)&&J(o)=='3,6,9,12,15'},
+ {q:'💡 اجمع الأرقام من 1 لـ 10 واطبع الناتج (55)',h:'total = 0\nfor i in range(1, 11):\n    total += i\nprint(total)',ok:(o,c)=>/\bfor\b/.test(c)&&J(o)=='55'}]},
+{lv:1,e:'♾️',t:'التكرار while',x:'<code>while</code> بتكرر طول ما الشرط صح. خد بالك تغيّر المتغير جواها وإلا هتلف للأبد!',ex:[
+ {q:'عدّ تنازلي: اطبع 3 ثم 2 ثم 1 باستخدام while',h:'n = 3\nwhile n > 0:\n    print(n)\n    n = n - 1',ok:(o,c)=>/while/.test(c)&&J(o)=='3,2,1'},
+ {q:'💡 المضاعفة: ابدأ بـ n = 1 وطول ما n أقل من 100 اطبعه وضاعفه (n = n * 2)',h:'n = 1\nwhile n < 100:\n    print(n)\n    n = n * 2',ok:(o,c)=>/while/.test(c)&&J(o)=='1,2,4,8,16,32,64'}]},
+{lv:1,e:'🧺',t:'القوائم lists',x:'القائمة بتخزن حاجات كتير: <code>fruits = ["apple", "banana"]</code><br><code>fruits.append("kiwi")</code> بتضيف، و <code>len(fruits)</code> بتعد.',ex:[
+ {q:'اعمل قائمة fruits فيها 3 فواكه واطبعها',h:'fruits = ["apple", "banana", "kiwi"]\nprint(fruits)',ok:(o,c)=>/fruits\s*=\s*\[/.test(c)&&o.length==1},
+ {q:'💡 قائمة المشتريات: items = ["milk"]. ضيف "bread" بـ append واطبع عدد العناصر بـ len',s:'items = ["milk"]\n',h:'items.append("bread")\nprint(len(items))',ok:(o,c)=>J(o)=='2'&&/append/.test(c)},
+ {q:'💡 names = ["Ali", "Sara", "Omar"]. اطبع كل اسم في سطر باستخدام for',s:'names = ["Ali", "Sara", "Omar"]\n',h:'for n in names:\n    print(n)',ok:(o,c)=>/\bfor\b/.test(c)&&J(o)=='Ali,Sara,Omar'}]},
+{lv:1,e:'⚙️',t:'الدوال def',x:'الدالة كود بنكتبه مرة وننادي عليه كذا مرة:<br><code>def hi():<br>&nbsp;&nbsp;&nbsp;&nbsp;print("Hi")</code><br>و <code>return</code> بترجّع قيمة.',ex:[
+ {q:'اعمل دالة say_hi تطبع Hi وناديها',h:'def say_hi():\n    print("Hi")\n\nsay_hi()',ok:(o,c)=>/def\s+say_hi/.test(c)&&J(o)=='Hi'},
+ {q:'💡 آلة التربيع: دالة square(n) ترجّع n * n. اطبع square(7)',h:'def square(n):\n    return n * n\n\nprint(square(7))',ok:(o,c)=>/return/.test(c)&&J(o)=='49'},
+ {q:'💡 زوجي ولا فردي: دالة is_even(n) ترجّع True لو n زوجي. اطبع is_even(10)',h:'def is_even(n):\n    return n % 2 == 0\n\nprint(is_even(10))',ok:(o,c)=>/def\s+is_even/.test(c)&&J(o)=='True'}]},
+{lv:1,e:'🧵',t:'النصوص و f-string',x:'الـ f-string بتدمج المتغيرات في النص: <code>f"Hello {name}"</code>',ex:[
+ {q:'name = "Sara". اطبع: Hello Sara باستخدام f-string',s:'name = "Sara"\n',h:'print(f"Hello {name}")',ok:(o,c)=>J(o)=='Hello Sara'&&/f["']/.test(c)},
+ {q:'💡 فاتورة: price = 50 و qty = 3. اطبع: Total: 150 باستخدام f-string',s:'price = 50\nqty = 3\n',h:'print(f"Total: {price * qty}")',ok:(o,c)=>J(o)=='Total: 150'&&/f["']/.test(c)}]},
+{lv:2,chk:1,e:'🗂️',t:'القواميس dict',x:'القاموس بيخزن أزواج مفتاح:قيمة. <code>student = {"name": "Ali", "age": 20}</code> وتقرا بـ <code>student["name"]</code>',ex:[
+ {q:'اعمل قاموس student فيه name و age',h:'student = {"name": "Ali", "age": 20}',ok:(o,c)=>/student\s*=\s*\{/.test(c)&&/["']name["']\s*:/.test(c)&&/["']age["']\s*:/.test(c)},
+ {q:'💡 اطبع قيمة name من القاموس',s:'student = {"name": "Ali", "age": 20}\n',h:'print(student["name"])',ok:(o,c)=>/print\(\s*student\[["']name["']\]\s*\)/.test(c)}]},
+{lv:2,chk:1,e:'🪄',t:'List Comprehension',x:'طريقة مختصرة لعمل قوائم: <code>[n * n for n in range(5)]</code>',ex:[
+ {q:'اعمل قائمة squares فيها مربعات الأرقام من 0 لـ 4',h:'squares = [n * n for n in range(5)]',ok:(o,c)=>/squares\s*=\s*\[[^\]]*for\s+\w+\s+in\s+range/.test(c)},
+ {q:'💡 فلتر: evens فيها الأعداد الزوجية من 0 لـ 9 فقط (استخدم if جوه القوسين)',h:'evens = [n for n in range(10) if n % 2 == 0]',ok:(o,c)=>/evens\s*=\s*\[[^\]]*for[^\]]*\bif\b[^\]]*%\s*2/.test(c)}]},
+{lv:2,chk:1,e:'🛡️',t:'معالجة الأخطاء try/except',x:'<code>try</code> بتجرّب كود، ولو حصل خطأ <code>except</code> بتمسكه وبيفضل البرنامج شغال.',ex:[
+ {q:'جرّب 10 / 0 جوه try وامسك ZeroDivisionError واطبع رسالة',h:'try:\n    print(10 / 0)\nexcept ZeroDivisionError:\n    print("Error")',ok:(o,c)=>/try:/.test(c)&&/except\s+ZeroDivisionError\s*:/.test(c)&&/print/.test(c)},
+ {q:'💡 حوّل النص "abc" لرقم بـ int() بأمان وامسك ValueError',h:'try:\n    n = int("abc")\nexcept ValueError:\n    print("Not a number")',ok:(o,c)=>/int\(/.test(c)&&/except\s+ValueError\s*:/.test(c)}]},
+{lv:3,chk:1,e:'🏗️',t:'الكلاسات OOP',x:'الكلاس قالب لعمل كائنات: <code>class Dog:</code> والدالة <code>__init__</code> بتتنفذ عند إنشاء الكائن، و <code>self</code> يمثل الكائن نفسه.',ex:[
+ {q:'اعمل كلاس Dog فيه __init__ بتاخد name وتخزنه في self.name',h:'class Dog:\n    def __init__(self, name):\n        self.name = name',ok:(o,c)=>/class\s+Dog/.test(c)&&/def\s+__init__\(self,\s*name/.test(c)&&/self\.name\s*=\s*name/.test(c)},
+ {q:'💡 ضيف دالة bark جوه Dog تطبع اسم الكلب + woof',s:'class Dog:\n    def __init__(self, name):\n        self.name = name\n',h:'    def bark(self):\n        print(self.name, "woof")',ok:(o,c)=>/def\s+bark\(self\)/.test(c)&&/print\(.*self\.name/.test(c)}]},
+{lv:3,chk:1,e:'🚀',t:'Generators و Decorators',x:'<code>yield</code> بتطلّع قيم واحدة واحدة (Generator). والـ Decorator دالة بتلفّ دالة تانية وبنستخدمها بـ <code>@</code>.',ex:[
+ {q:'اعمل دالة مولّدة count_up(n) بتستخدم yield',h:'def count_up(n):\n    for i in range(n):\n        yield i',ok:(o,c)=>/def\s+count_up\(\s*n\s*\)/.test(c)&&/\byield\b/.test(c)},
+ {q:'💡 اعمل ديكوريتور log بيطبع called قبل تنفيذ الدالة، وطبّقه بـ @log',h:'def log(f):\n    def wrapper(*args):\n        print("called")\n        return f(*args)\n    return wrapper\n\n@log\ndef hi():\n    print("hi")',ok:(o,c)=>/def\s+log\(/.test(c)&&/@log/.test(c)&&/def\s+\w+\(\*args/.test(c)&&/return\s+f\(/.test(c)}]}
+];
+const TOTAL=L.reduce((a,l)=>a+l.ex.length,0);
+const BADGES=[['🌱','أول تمرين',1],['🔥','10 تمارين',10],['⚡','20 تمرين',20],['👑','خلّصت كل حاجة',TOTAL]];
+
+/* ===== تشغيل بايثون الحقيقي (Pyodide داخل Worker) ===== */
+const WSRC=`importScripts('https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js');
+let py=null,out=[];
+onmessage=async e=>{try{if(!py){py=await loadPyodide();py.setStdout({batched:s=>out.push(s)});py.setStderr({batched:s=>out.push(s)})}
+out=[];const g=py.globals.get('dict')();try{await py.runPythonAsync(e.data,{globals:g})}finally{g.destroy()}postMessage({out})}catch(err){postMessage({out,err:String(err.message||err)})}}`;
+let W=null,warm=false;
+function runPy(code){return new Promise(res=>{
+ if(!W)W=new Worker(URL.createObjectURL(new Blob([WSRC],{type:'text/javascript'})));
+ const t=setTimeout(()=>{W.terminate();W=null;warm=false;res({out:[],err:'TimeoutError: الكود خد وقت طويل'})},warm?6000:60000);
+ W.onmessage=e=>{clearTimeout(t);warm=true;res(e.data)};W.onerror=()=>{clearTimeout(t);res({out:[],err:'Error: تعذّر تشغيل بايثون'})};
+ W.postMessage(code)})}
+/* شرح أخطاء بايثون بالعربي */
+function arExp(t,m){
+ if(t==='SyntaxError'||t==='IndentationError'||t==='TabError'){
+  if(/never closed/.test(m))return 'نسيت تقفل القوس — فيه قوس مفتوح من غير قفل.';
+  if(/unmatched/.test(m))return 'فيه قوس زيادة مالوش بداية.';
+  if(/unterminated/.test(m))return 'نسيت تقفل علامة التنصيص.';
+  if(/expected ':'/.test(m))return 'نسيت النقطتين : في آخر السطر.';
+  if(/expected an indented block/.test(m))return 'المسافة البادئة مش مظبوطة: السطر اللي بعد النقطتين : لازم يتحرك لجوه (4 مسافات).';
+  if(/unexpected indent/.test(m))return 'فيه مسافات زيادة في أول السطر من غير سبب.';
+  if(/unindent|inconsistent/.test(m))return 'المسافة البادئة مش مظبوطة: لازم تبقى زي باقي الأسطر في نفس المستوى.';
+  return 'فيه خطأ في كتابة السطر. راجع الأقواس والتنصيص والنقطتين والإملاء.'}
+ if(t==='NameError'){const n=(m.match(/'(.+?)'/)||[])[1]||'';return `الاسم ${n} مش متعرّف. لو متغير لازم تديله قيمة قبل ما تستخدمه، ولو أمر راجع الإملاء (بايثون حساسة للحروف الكبيرة والصغيرة).`}
+ if(t==='TypeError')return 'مشكلة في نوع البيانات، مثلاً جمع نص مع رقم. استخدم str() أو f-string.';
+ if(t==='ZeroDivisionError')return 'القسمة على صفر مش مسموحة.';
+ if(t==='ValueError')return 'القيمة مش مناسبة للعملية (مثلاً تحويل نص لرقم).';
+ if(t==='IndexError')return 'رقم العنصر أكبر من حجم القائمة.';
+ if(t==='KeyError')return 'المفتاح ده مش موجود في القاموس.';
+ if(t==='AttributeError')return 'الحاجة دي ملهاش الخاصية أو الدالة دي — راجع الإملاء.';
+ if(t==='TimeoutError')return 'الكود خد وقت طويل، غالباً فيه while مش بتنتهي.';
+ return 'حصل خطأ في الكود: '+m}
+
+/* ===== العرض ===== */
+function render(){
+ const a=$('#app');
+ if(!me)return a.innerHTML=authV();
+ if(me.admin)return a.innerHTML=adminV();
+ const u=DB.find(x=>x.code===me.code);if(!u||u.status!=='approved'){me=null;save('pa_session',null);return render()}
+ a.innerHTML=appV(u);bindEd();
+}
+function authV(){
+ return `<div class="hero">${logoH()}<h1>أكاديمية بايثون</h1><p style="color:var(--mut);margin:0 0 14px">اتعلم من الصفر لحد الاحتراف… خطوة صغيرة كل يوم</p><button class="btn ghost sm" onclick="installApp()">📲 ثبّت كتطبيق</button></div>
+ <div class="card"><div class="tabs"><button class="${tab==='login'?'on':''}" onclick="tab='login';render()">🔑 تسجيل دخول</button><button class="${tab==='reg'?'on':''}" onclick="tab='reg';render()">📝 حساب جديد</button></div>
+ ${tab==='login'?`<label>الكود</label><div class="field"><span>🆔</span><input id="lc" placeholder="كود الطالب" autocomplete="off"></div>
+ <label>الباسورد</label><div class="field"><span>🔒</span><input id="lp" type="password" placeholder="••••••"></div>
+ <button class="btn full" onclick="login()">ادخل 🚀</button>`
+ :`<label>الاسم بالكامل</label><div class="field"><span>👤</span><input id="rn" placeholder="اسمك"></div>
+ <label>الكود</label><div class="field"><span>🆔</span><input id="rc" placeholder="كود الطالب" autocomplete="off"></div>
+ <label>الباسورد</label><div class="field"><span>🔒</span><input id="rp" type="password" placeholder="6 حروف على الأقل"></div>
+ <label>صورة الكارنيه</label><label class="drop"><span class="ic">🪪</span><span id="pt" style="flex:1">اضغط لاختيار الصورة</span><img id="pv" style="display:none"><input type="file" accept="image/*" hidden onchange="pick(this)"></label>
+ <button class="btn full" onclick="reg()">ابعت الطلب 📨</button><div class="note">حسابك هيتفعّل بعد موافقة المشرف.</div>`}</div>`;
+}
+function resize(f,max,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',.75))};im.src=r.result};r.readAsDataURL(f)}
+function pick(i){const f=i.files[0];if(f)resize(f,480,d=>{photo=d;$('#pv').src=d;$('#pv').style.display='block';$('#pt').textContent=f.name})}
+async function reg(){
+ const n=$('#rn').value.trim(),c=$('#rc').value.trim().toLowerCase(),p=$('#rp').value;if(busy)return;
+ if(!n||!/^[a-z0-9_]{3,20}$/.test(c)||p.length<6||!photo){const card=$('.card');card.classList.remove('shake');void card.offsetWidth;card.classList.add('shake');return toast('⚠️ كمّل البيانات: الكود إنجليزي/أرقام (3+)، الباسورد 6+، والصورة')}
+ busy=true;
+ const a=await sb.auth.signUp({email:mail(c),password:p});
+ if(a.error||!a.data.session){busy=false;return toast(a.error&&/regist/i.test(a.error.message)?'⚠️ الكود ده مستخدم':'⚠️ حصل خطأ، جرّب تاني')}
+ const uid=a.data.user.id,path=uid+'/id.jpg',blob=await (await fetch(photo)).blob();
+ const up=await sb.storage.from('ids').upload(path,blob,{contentType:'image/jpeg'});
+ const ins=await sb.from('profiles').insert({id:uid,name:n,code:c,photo_path:path});
+ await sb.auth.signOut();busy=false;photo='';
+ if(up.error||ins.error)return toast('⚠️ حصل خطأ في الإرسال، جرّب تاني');
+ $('#app').innerHTML=`<div class="card center"><div class="big">⏳</div><h2>طلبك اتبعت!</h2><p>المدرس هيراجع الكارنيه ويوافق على حسابك. بعد كده سجّل دخول بالكود والباسورد.</p><button class="btn" onclick="tab='login';render()">رجوع</button></div>`;
+}
+async function login(){
+ const c=$('#lc').value.trim(),p=$('#lp').value;if(!c||!p||busy)return;busy=true;
+ const r=await sb.auth.signInWithPassword({email:mail(c),password:p});busy=false;
+ if(r.error){$('.card').classList.add('shake');return toast('❌ الكود أو الباسورد غلط')}
+ await enter(true);
+}
+async function logout(){await sb.auth.signOut();me=null;DB=[];tab='login';render()}
+
+/* ----- المشرف ----- */
+function adminV(){
+ const rows=DB.map((u,i)=>`<div class="u"><img src="${u.photo}" onclick="zoom(${i})"><div class="grow"><b>${esc(u.name)}</b><br><small>كود: ${esc(u.code)}</small></div><span class="tag">${{pending:'⏳ مستني',approved:'✅ مقبول',rejected:'🚫 مرفوض'}[u.status]}</span>
+ ${u.status==='pending'?`<button class="btn sm" onclick="setS(${i},'approved')">✅ قبول</button><button class="btn ghost sm" onclick="setS(${i},'rejected')">❌ رفض</button>`:''}</div>`).join('');
+ const ls=L.map((l,i)=>`<div class="u"><span style="font-size:24px">${l.e}</span><div class="grow"><b>${i+1}. ${l.t}</b> <span class="lv">${LV[l.lv]}</span></div><span class="tag">${i<REL.e?'✍️ التمارين مفتوحة':i<REL.l?'📖 الشرح مفتوح':'🔒 مقفول'}</span></div>`).join('');
+ return `<div class="card top">${logoH('s')}<div class="grow"><h2 style="margin:0">لوحة المشرف</h2><small>${DB.filter(u=>u.status==='pending').length} طلب مستني</small></div><button class="btn ghost sm" onclick="installApp()">📲</button><button class="btn ghost sm" onclick="logout()">🚪 خروج</button></div>
+ ${trackV()}<div class="card"><h2>🎛️ التحكم في الدروس</h2><p style="margin:0 0 8px;color:var(--mut)">افتح الدرس لما تبدأ تشرحه، وافتح تمارينه لما تخلّص الشرح. الطلاب بيشوفوا بالترتيب بس.</p>
+ <div class="bar"><i style="width:${Math.round(REL.l/L.length*100)}%"></i></div><small>الدروس المفتوحة ${REL.l} من ${L.length} — التمارين المفتوحة ${REL.e}</small>
+ <div class="row"><button class="btn" onclick="rel('l',1)">📖 افتح الدرس التالي</button><button class="btn" onclick="rel('e',1)">✍️ افتح تمارين الدرس</button><button class="btn ghost" onclick="rel('l',-1)">↩️ اقفل آخر درس</button><button class="btn ghost" onclick="rel('e',-1)">↩️ اقفل آخر تمارين</button></div>${ls}</div>
+ <div class="card"><h2>👥 طلبات الطلاب</h2>${rows||'<p class="center">مفيش طلبات لسه. سجّل حساب طالب وارجع هنا 😉</p>'}</div>`;
+}
+async function rel(k,d){const mx=k==='l'?L.length:REL.l;REL[k]=Math.max(k==='l'?1:0,Math.min(mx,REL[k]+d));REL.e=Math.min(REL.e,REL.l);
+ const r=await sb.from('settings').update({lessons_open:REL.l,ex_open:REL.e}).eq('id',1);toast(r.error?'⚠️ فشل الحفظ':k==='l'?'📖 اتحدّث فتح الدروس':'✍️ اتحدّث فتح التمارين');render()}
+async function setS(i,st){const r=await sb.rpc('set_status',{uid:DB[i].id,s:st});if(r.error)return toast('⚠️ فشل');DB[i].status=st;toast(st==='approved'?'✅ تم القبول':'🚫 تم الرفض');render()}
+function zoom(i){const d=document.createElement('div');d.className='lb';d.onclick=()=>d.remove();d.innerHTML=`<img src="${DB[i].photo}">`;document.body.appendChild(d)}
+
+/* ----- الطالب ----- */
+function pickX(u){const l=L[cur];const j=l.ex.findIndex((e,j)=>!u.done.includes(cur+'-'+j));cx=j<0?0:j;window.__code=null}
+function appV(u){
+ const pct=Math.round(u.done.length/TOTAL*100),pins=u.pins||[];
+ const order=L.map((l,i)=>i).sort((a,b)=>(pins.includes(b)-pins.includes(a))||a-b);
+ const l=L[cur],open=cur<REL.l,exOpen=cur<REL.e;
+ const code=window.__code!=null&&window.__cl===cur+'-'+cx?window.__code:(l.ex[cx].s||'');
+ return `<div class="card"><div class="top">${logoH('s')}<div class="grow"><b>${esc(u.name)}</b><br><small>${u.done.length} من ${TOTAL} تمرين</small></div><span class="chip">⭐ ${u.points}</span><button class="btn ghost sm" onclick="installApp()">📲</button><button class="btn ghost sm" onclick="logout()">🚪</button></div>
+ <div class="bar"><i style="width:${pct}%"></i></div><small>${pct}% من المنهج</small></div>
+ <div class="lessons">${order.map(i=>{const x=L[i],lk=i>=REL.l,n=x.ex.filter((e,j)=>u.done.includes(i+'-'+j)).length;return `<div class="les ${i===cur?'cur':''} ${lk?'lock':''}" onclick="go(${i})"><button class="pin ${pins.includes(i)?'on':''}" onclick="event.stopPropagation();pin(${i})">📌</button><span class="e">${lk?'🔒':x.e}</span><b>${i+1}</b><br><small>${x.t}</small><br><small>${n}/${x.ex.length}</small></div>`}).join('')}</div>
+ <div class="card"><span class="lv">${LV[l.lv]}</span><h2>${l.e} ${l.t}</h2>
+ ${!open?`<div class="hint">🔒 الدرس ده لسه مقفول. المدرس هيفتحه لما يوصل له في الشرح.</div>`:`<p>${l.x}</p>
+ <div class="exs">${l.ex.map((e,j)=>`<button class="${j===cx?'on':''}" ${!exOpen||(j>0&&!u.done.includes(cur+'-'+(j-1)))?'disabled':''} onclick="goX(${j})">${u.done.includes(cur+'-'+j)?'✅':j+1}</button>`).join('')}</div>
+ ${!exOpen?`<div class="hint">✍️ التمارين لسه مقفولة. المدرس هيفتحها بعد ما يخلّص شرح الدرس.</div>`:`<div class="task">🎯 تمرين ${cx+1}: ${l.ex[cx].q}</div>
+ <textarea id="ed" spellcheck="false">${esc(code)}</textarea>
+ <div class="row"><button class="btn" onclick="exec()">▶ شغّل</button><button class="btn ghost" onclick="hint()">💡 تلميح</button><button class="btn ghost" onclick="goX(cx,1)">↺ من الأول</button></div><div id="res">${lastOut}</div>`}`}</div>
+ <div class="card"><b>🏅 الشارات</b><div class="badges" style="margin-top:8px">${BADGES.map(b=>`<div class="bdg ${u.done.length>=b[2]?'on':''}"><b>${b[0]}</b>${b[1]}</div>`).join('')}</div></div>`;
+}
+function pin(i){const u=DB.find(x=>x.code===me.code),k=u.pins.indexOf(i);k<0?u.pins.push(i):u.pins.splice(k,1);sb.rpc('set_pins',{p:u.pins});toast(k<0?'📌 اتثبّت':'تم إلغاء التثبيت');render()}
+function go(i){cur=i;lastOut='';pickX(DB.find(x=>x.code===me.code));render()}
+function goX(j,r){cx=j;lastOut='';if(r)window.__code=null;render()}
+function bindEd(){const t=$('#ed');if(!t)return;t.addEventListener('keydown',e=>{if(e.key==='Tab'){e.preventDefault();const s=t.selectionStart;t.value=t.value.slice(0,s)+'    '+t.value.slice(t.selectionEnd);t.selectionStart=t.selectionEnd=s+4}});t.addEventListener('input',()=>{window.__code=t.value;window.__cl=cur+'-'+cx})}
+function hint(){$('#res').innerHTML=`<div class="hint">💡 ${esc(L[cur].ex[cx].h).replace(/\n/g,'<br>').replace(/ {4}/g,'&nbsp;&nbsp;&nbsp;&nbsp;')}</div>`}
+async function exec(){
+ const code=$('#ed').value;window.__code=code;window.__cl=cur+'-'+cx;
+ const l=L[cur],e=l.ex[cx],u=DB.find(x=>x.code===me.code),key=cur+'-'+cx;
+ $('#res').innerHTML='<div class="hint">⏳ بيشغّل الكود… (أول مرة بياخد ثواني عشان يجهّز بايثون)</div>';
+ const r=await runPy(code);let ok=false,first=false;
+ let h=`<div class="out">${r.out&&r.out.length?esc(r.out.join('\n')):'(مفيش مخرجات)'}</div>`;
+ if(r.err){const ls=r.err.trim().split('\n'),last=ls[ls.length-1],m=last.match(/^(\w+):\s*(.*)$/),ln=[...r.err.matchAll(/File "<exec>", line (\d+)/g)].pop(),t=m?m[1]:'Error';
+  h+=`<div class="err"><div class="py">${esc(t)}${ln?': line '+ln[1]:''}</div>🧐 ${esc(arExp(t,m?m[2]:last))}</div>`}
+ else if(e.ok(r.out,code)){ok=true;first=!u.done.includes(key);if(first){u.done.push(key);u.points+=10;confetti()}
+  const nb=first&&BADGES.find(b=>b[2]===u.done.length),more=cx<l.ex.length-1;
+  h+=`<div class="good">🎉 ${first?'برافو! +10 نقاط':'حلّك صح!'}${nb?` — فتحت شارة ${nb[0]} ${nb[1]}`:''}</div>`;
+  h+=more?`<div class="row"><button class="btn" onclick="goX(${cx+1})">التمرين الجاي ⬅️</button></div>`:`<div class="good">🏁 خلّصت تمارين الدرس ده!${cur<REL.l-1?'':' استنى المدرس يفتح الدرس الجاي.'}</div>`}
+ else h+=`<div class="hint">🤔 الكود اشتغل بس مش بيحقق المطلوب. اقرأ التمرين تاني أو اضغط 💡 تلميح.</div>`;
+ u.tries++;if(ok)u.wins++;sb.rpc('record_attempt',{k:key,ok});
+ lastOut=h;const keep=window.__code;render();window.__code=keep;if($('#ed'))$('#ed').value=keep;
+}
+const ago=t=>{if(!t)return 'لسه ما دخلش';const m=Math.floor((Date.now()-t)/6e4);return m<1?'دلوقتي':m<60?`من ${m} دقيقة`:m<1440?`من ${Math.floor(m/60)} ساعة`:`من ${Math.floor(m/1440)} يوم`};
+const curOf=u=>L.findIndex((l,i)=>l.ex.some((e,j)=>!u.done.includes(i+'-'+j))),isOn=u=>u.last&&Date.now()-u.last<3e5;
+function trackV(){
+ const S=DB.filter(u=>u.status==='approved'),avg=S.length?Math.round(S.reduce((a,u)=>a+u.done.length/TOTAL*100,0)/S.length):0;
+ const rows=S.map(u=>{const p=Math.round(u.done.length/TOTAL*100),c=curOf(u),acc=u.tries?Math.round((u.wins||0)/u.tries*100):0;
+  const lv=LV.map((n,k)=>{const ids=[];L.forEach((l,i)=>{if(l.lv===k)l.ex.forEach((e,j)=>ids.push(i+'-'+j))});const q=Math.round(ids.filter(x=>u.done.includes(x)).length/ids.length*100);return `<span>${n}<div class="bar"><i style="width:${q}%"></i></div>${q}%</span>`}).join('');
+  return `<div class="stu"><div class="top"><span class="dot ${isOn(u)?'on':''}"></span><b class="grow">${esc(u.name)} <small style="color:var(--mut)">(${esc(u.code)})</small></b><span class="tag">${c<0?'🎓 خلّص المنهج':LV[L[c].lv]+' — درس '+(c+1)}</span></div>
+  <small style="color:var(--mut)">آخر دخول: ${ago(u.last)} • مرات الدخول: ${u.logins||0} • دقة المحاولات: ${acc}% • حلّ ${u.done.length}/${TOTAL}</small>
+  <div class="bar"><i style="width:${p}%"></i></div><small><b>${p}%</b> من المنهج كله</small><div class="mini">${lv}</div></div>`}).join('');
+ return `<div class="card"><div class="top"><h2 class="grow" style="margin:0">📊 متابعة الطلاب</h2><button class="btn ghost sm" onclick="refresh()">🔄 تحديث</button></div>
+ <div class="st"><div><b>${S.length}</b>طالب مقبول</div><div><b>${S.filter(u=>u.last).length}</b>دخلوا</div><div><b>${S.filter(isOn).length}</b>🟢 متصل الآن</div><div><b>${avg}%</b>متوسط التقدم</div></div>${rows||'<p class="center">مفيش طلاب مقبولين لسه.</p>'}</div>`;
+}
+/* ----- تثبيت كتطبيق ----- */
+let DP=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();DP=e});
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+function installApp(){
+ if(DP){DP.prompt();DP=null;return}
+ if(matchMedia('(display-mode: standalone)').matches)return toast('التطبيق متثبّت فعلاً ✅');
+ const d=document.createElement('div');d.className='lb';d.onclick=()=>d.remove();
+ d.innerHTML=`<div class="card" style="max-width:340px;margin:16px"><h2>📲 ثبّت التطبيق</h2><p><b>أندرويد (Chrome):</b> اضغط ⋮ ثم «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».</p><p><b>آيفون (Safari):</b> اضغط زر المشاركة ⬆️ ثم «إضافة إلى الشاشة الرئيسية».</p><p style="color:var(--mut);font-size:13px;margin:0">اضغط في أي مكان للإغلاق</p></div>`;document.body.appendChild(d)}
+boot();
+</script>
+</body>
+</html>
